@@ -1,8 +1,8 @@
-//ignore_for_file: prefer_const_constructors
 import 'package:abstract_flutter/abstract_flutter.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:test/test.dart';
+import 'package:flutter_test/flutter_test.dart';
 
+//ignore_for_file: prefer_const_constructors
 void main() {
   group("$RadiusField", () {
     test("addition", () {
