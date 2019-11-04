@@ -115,11 +115,11 @@ class BorderRadiusDirectionalSumMonoid
   BorderRadiusDirectional operate(
           BorderRadiusDirectional a, BorderRadiusDirectional b) =>
       BorderRadiusDirectional.only(
-        topStart: const RadiusProductGroup().operate(a.topStart, b.topStart),
-        topEnd: const RadiusProductGroup().operate(a.topEnd, b.topEnd),
+        topStart: const RadiusSumGroup().operate(a.topStart, b.topStart),
+        topEnd: const RadiusSumGroup().operate(a.topEnd, b.topEnd),
         bottomStart:
-            const RadiusProductGroup().operate(a.bottomStart, b.bottomStart),
-        bottomEnd: const RadiusProductGroup().operate(a.bottomEnd, b.bottomEnd),
+            const RadiusSumGroup().operate(a.bottomStart, b.bottomStart),
+        bottomEnd: const RadiusSumGroup().operate(a.bottomEnd, b.bottomEnd),
       );
 }
 
