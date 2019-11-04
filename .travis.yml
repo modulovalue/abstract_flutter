@@ -1,8 +1,23 @@
+language: bash
+os:
+  - osx
+sudo: false
 before_script:
-  - git clone https://github.com/flutter/flutter.git -b beta
-  - ./flutter/bin/flutter doctor
-
+  - cd ..
+  - git clone https://github.com/flutter/flutter.git -b stable
+  - export PATH=$PATH:$PWD/flutter/bin
+  - export PATH=$PATH:$PWD/flutter/bin/cache/dart-sdk/bin
+  - flutter doctor
+  - cd -
 script:
-  - ./flutter/bin/flutter pub get
-  - ./flutter/bin/flutter pub run test_coverage
+  # abort on error
+  - set -e
+  - flutter packages get
+  - flutter format --set-exit-if-changed lib example
+  - flutter analyze lib example
+  - flutter test --no-pub --coverage
+  # export coverage
   - bash <(curl -s https://codecov.io/bash)
+cache:
+  directories:
+    - $HOME/.pub-cache
