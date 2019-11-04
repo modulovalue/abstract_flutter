@@ -3,5 +3,6 @@ before_script:
   - ./flutter/bin/flutter doctor
 
 script:
+  - ./flutter/bin/flutter pub get
   - ./flutter/bin/flutter pub run test_coverage
   - bash <(curl -s https://codecov.io/bash)
