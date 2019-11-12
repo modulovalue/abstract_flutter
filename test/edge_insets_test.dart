@@ -111,24 +111,30 @@ void main() {
     });
   });
   group("$EdgeInsetsScalarMonoid", () {
-    testScalarIdentity(EdgeInsetsScalarMonoid(), EdgeInsets.only(
-      top: 1.0,
-      bottom: 3.0,
-      left: 7.0,
-      right: 11.0,
-    ));
+    testScalarIdentity(
+        EdgeInsetsScalarMonoid(),
+        EdgeInsets.only(
+          top: 1.0,
+          bottom: 3.0,
+          left: 7.0,
+          right: 11.0,
+        ));
     testScalarMultiplication(
-        EdgeInsetsScalarMonoid(), EdgeInsets.only(
-      top: 1.0,
-      bottom: 3.0,
-      left: 7.0,
-      right: 11.0,
-    ), 2.0, EdgeInsets.only(
-      top: 1.0,
-      bottom: 3.0,
-      left: 7.0,
-      right: 11.0,
-    ) * 2);
+        EdgeInsetsScalarMonoid(),
+        EdgeInsets.only(
+          top: 1.0,
+          bottom: 3.0,
+          left: 7.0,
+          right: 11.0,
+        ),
+        2.0,
+        EdgeInsets.only(
+              top: 1.0,
+              bottom: 3.0,
+              left: 7.0,
+              right: 11.0,
+            ) *
+            2);
   });
   test("$EdgeInsetsAlgebra", () {
     expect(EdgeInsetsAlgebra().addition, const EdgeInsetsSumGroup());

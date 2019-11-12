@@ -7,8 +7,8 @@ void testScalarIdentity<K, F>(ScalarMonoid_<K, F> scalarMonoid_, K element) {
   });
 }
 
-void testScalarMultiplication<K, F>(ScalarMonoid_<K, F> scalarMonoid_,
-    K elementA, F scalar, F result) {
+void testScalarMultiplication<K, F>(
+    ScalarMonoid_<K, F> scalarMonoid_, K elementA, F scalar, F result) {
   test("scalar multiplication", () {
     expect(scalarMonoid_.sOperate(elementA, scalar), result);
   });

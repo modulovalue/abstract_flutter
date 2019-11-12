@@ -122,22 +122,27 @@ void main() {
   });
   group("$BorderRadiusDirectionalScalarMonoid", () {
     testScalarIdentity(
-      BorderRadiusDirectionalScalarMonoid(), BorderRadiusDirectional.only(
-        topStart: Radius.elliptical(1.0, 3.0),
-        topEnd: Radius.elliptical(7.0, 11.0),
-        bottomStart: Radius.elliptical(13.0, 17.0),
-        bottomEnd: Radius.elliptical(12.0, 23.0)),);
+      BorderRadiusDirectionalScalarMonoid(),
+      BorderRadiusDirectional.only(
+          topStart: Radius.elliptical(1.0, 3.0),
+          topEnd: Radius.elliptical(7.0, 11.0),
+          bottomStart: Radius.elliptical(13.0, 17.0),
+          bottomEnd: Radius.elliptical(12.0, 23.0)),
+    );
     testScalarMultiplication(
-        BorderRadiusDirectionalScalarMonoid(), BorderRadiusDirectional.only(
-        topStart: Radius.elliptical(1.0, 3.0),
-        topEnd: Radius.elliptical(7.0, 11.0),
-        bottomStart: Radius.elliptical(13.0, 17.0),
-        bottomEnd: Radius.elliptical(12.0, 23.0)), 2.0,
+        BorderRadiusDirectionalScalarMonoid(),
         BorderRadiusDirectional.only(
             topStart: Radius.elliptical(1.0, 3.0),
             topEnd: Radius.elliptical(7.0, 11.0),
             bottomStart: Radius.elliptical(13.0, 17.0),
-            bottomEnd: Radius.elliptical(12.0, 23.0)) * 2);
+            bottomEnd: Radius.elliptical(12.0, 23.0)),
+        2.0,
+        BorderRadiusDirectional.only(
+                topStart: Radius.elliptical(1.0, 3.0),
+                topEnd: Radius.elliptical(7.0, 11.0),
+                bottomStart: Radius.elliptical(13.0, 17.0),
+                bottomEnd: Radius.elliptical(12.0, 23.0)) *
+            2);
   });
   test("$AlignmentAlgebra", () {
     expect(BorderRadiusDirectionalAlgebra().addition,

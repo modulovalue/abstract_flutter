@@ -58,9 +58,13 @@ void main() {
     });
   });
   group("$VelocityScalarMonoid", () {
-    testScalarIdentity(VelocityScalarMonoid(), Velocity(pixelsPerSecond: Offset(3.0, 2.0)));
+    testScalarIdentity(
+        VelocityScalarMonoid(), Velocity(pixelsPerSecond: Offset(3.0, 2.0)));
     testScalarMultiplication(
-        VelocityScalarMonoid(), Velocity(pixelsPerSecond: Offset(3.0, 5.0)), 2.0, Velocity(pixelsPerSecond: Offset(6.0, 10.0)));
+        VelocityScalarMonoid(),
+        Velocity(pixelsPerSecond: Offset(3.0, 5.0)),
+        2.0,
+        Velocity(pixelsPerSecond: Offset(6.0, 10.0)));
   });
   test("$VelocityAlgebra", () {
     expect(VelocityAlgebra().addition, const VelocitySumGroup());

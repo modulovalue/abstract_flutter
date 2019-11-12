@@ -56,8 +56,8 @@ void main() {
   });
   group("$RadiusScalarMonoid", () {
     testScalarIdentity(RadiusScalarMonoid(), Radius.elliptical(3.0, 2.0));
-    testScalarMultiplication(
-        RadiusScalarMonoid(), Radius.elliptical(3.0, 5.0), 2.0, Radius.elliptical(6.0, 10.0));
+    testScalarMultiplication(RadiusScalarMonoid(), Radius.elliptical(3.0, 5.0),
+        2.0, Radius.elliptical(6.0, 10.0));
   });
   test("$RadiusAlgebra", () {
     expect(RadiusAlgebra().addition, const RadiusSumGroup());

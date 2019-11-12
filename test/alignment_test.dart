@@ -54,8 +54,8 @@ void main() {
   });
   group("$AlignmentScalarMonoid", () {
     testScalarIdentity(AlignmentScalarMonoid(), Alignment(3.0, 2.0));
-    testScalarMultiplication(
-        AlignmentScalarMonoid(), Alignment(3.0, 5.0), 2.0, Alignment(6.0, 10.0));
+    testScalarMultiplication(AlignmentScalarMonoid(), Alignment(3.0, 5.0), 2.0,
+        Alignment(6.0, 10.0));
   });
   test("$AlignmentAlgebra", () {
     expect(AlignmentAlgebra().addition, const AlignmentSumGroup());

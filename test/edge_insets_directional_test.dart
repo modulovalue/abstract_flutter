@@ -116,24 +116,29 @@ void main() {
   });
   group("$EdgeInsetsDirectionalScalarMonoid", () {
     testScalarIdentity(
-        EdgeInsetsDirectionalScalarMonoid(), EdgeInsetsDirectional.only(
-      top: 1.0,
-      bottom: 3.0,
-      start: 7.0,
-      end: 11.0,
-    ));
+        EdgeInsetsDirectionalScalarMonoid(),
+        EdgeInsetsDirectional.only(
+          top: 1.0,
+          bottom: 3.0,
+          start: 7.0,
+          end: 11.0,
+        ));
     testScalarMultiplication(
-        EdgeInsetsDirectionalScalarMonoid(), EdgeInsetsDirectional.only(
-      top: 1.0,
-      bottom: 3.0,
-      start: 7.0,
-      end: 11.0,
-    ), 2.0, EdgeInsetsDirectional.only(
-      top: 1.0,
-      bottom: 3.0,
-      start: 7.0,
-      end: 11.0,
-    ) * 2);
+        EdgeInsetsDirectionalScalarMonoid(),
+        EdgeInsetsDirectional.only(
+          top: 1.0,
+          bottom: 3.0,
+          start: 7.0,
+          end: 11.0,
+        ),
+        2.0,
+        EdgeInsetsDirectional.only(
+              top: 1.0,
+              bottom: 3.0,
+              start: 7.0,
+              end: 11.0,
+            ) *
+            2);
   });
   test("$EdgeInsetsDirectionalAlgebra", () {
     expect(EdgeInsetsDirectionalAlgebra().addition,

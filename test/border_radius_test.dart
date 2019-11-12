@@ -119,21 +119,27 @@ void main() {
     });
   });
   group("$BorderRadiusScalarMonoid", () {
-    testScalarIdentity(BorderRadiusScalarMonoid(), BorderRadius.only(
-        topLeft: Radius.elliptical(1.0, 3.0),
-        topRight: Radius.elliptical(7.0, 11.0),
-        bottomLeft: Radius.elliptical(13.0, 17.0),
-        bottomRight: Radius.elliptical(12.0, 23.0)));
+    testScalarIdentity(
+        BorderRadiusScalarMonoid(),
+        BorderRadius.only(
+            topLeft: Radius.elliptical(1.0, 3.0),
+            topRight: Radius.elliptical(7.0, 11.0),
+            bottomLeft: Radius.elliptical(13.0, 17.0),
+            bottomRight: Radius.elliptical(12.0, 23.0)));
     testScalarMultiplication(
-        BorderRadiusScalarMonoid(), BorderRadius.only(
-        topLeft: Radius.elliptical(1.0, 3.0),
-        topRight: Radius.elliptical(7.0, 11.0),
-        bottomLeft: Radius.elliptical(13.0, 17.0),
-        bottomRight: Radius.elliptical(12.0, 23.0)), 2.0, BorderRadius.only(
-        topLeft: Radius.elliptical(1.0, 3.0),
-        topRight: Radius.elliptical(7.0, 11.0),
-        bottomLeft: Radius.elliptical(13.0, 17.0),
-        bottomRight: Radius.elliptical(12.0, 23.0)) * 2);
+        BorderRadiusScalarMonoid(),
+        BorderRadius.only(
+            topLeft: Radius.elliptical(1.0, 3.0),
+            topRight: Radius.elliptical(7.0, 11.0),
+            bottomLeft: Radius.elliptical(13.0, 17.0),
+            bottomRight: Radius.elliptical(12.0, 23.0)),
+        2.0,
+        BorderRadius.only(
+                topLeft: Radius.elliptical(1.0, 3.0),
+                topRight: Radius.elliptical(7.0, 11.0),
+                bottomLeft: Radius.elliptical(13.0, 17.0),
+                bottomRight: Radius.elliptical(12.0, 23.0)) *
+            2);
   });
   test("$BorderRadiusAlgebra", () {
     expect(BorderRadiusAlgebra().addition, const BorderRadiusSumGroup());

@@ -57,14 +57,17 @@ void main() {
     });
   });
   group("$AlignmentDirectionalScalarMonoid", () {
-    testScalarIdentity(AlignmentDirectionalScalarMonoid(), AlignmentDirectional(3.0, 2.0));
-    testScalarMultiplication(
-        AlignmentDirectionalScalarMonoid(), AlignmentDirectional(3.0, 5.0), 2.0, AlignmentDirectional(6.0, 10.0));
+    testScalarIdentity(
+        AlignmentDirectionalScalarMonoid(), AlignmentDirectional(3.0, 2.0));
+    testScalarMultiplication(AlignmentDirectionalScalarMonoid(),
+        AlignmentDirectional(3.0, 5.0), 2.0, AlignmentDirectional(6.0, 10.0));
   });
   test("$AlignmentAlgebra", () {
-    expect(AlignmentDirectionalAlgebra().addition, const AlignmentDirectionalSumGroup());
-    expect(AlignmentDirectionalAlgebra().multiplication, const AlignmentDirectionalProductGroup());
-    expect(AlignmentDirectionalAlgebra().scalar, const AlignmentDirectionalScalarMonoid());
+    expect(AlignmentDirectionalAlgebra().addition,
+        const AlignmentDirectionalSumGroup());
+    expect(AlignmentDirectionalAlgebra().multiplication,
+        const AlignmentDirectionalProductGroup());
+    expect(AlignmentDirectionalAlgebra().scalar,
+        const AlignmentDirectionalScalarMonoid());
   });
 }
-
