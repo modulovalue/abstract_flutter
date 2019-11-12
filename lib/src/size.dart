@@ -46,3 +46,26 @@ class SizeProductMonoid implements Monoid_<Size> {
   Size operate(Size a1, Size a2) =>
       Size(a1.width * a2.width, a1.height * a2.height);
 }
+
+class SizeScalarMonoid implements ScalarMonoid_<Size, double> {
+  const SizeScalarMonoid();
+
+  @override
+  double sIdentity() => 1.0;
+
+  @override
+  Size sOperate(Size vector, double scalar) => vector * scalar;
+}
+
+class SizeAlgebra implements Algebra_<Size, double> {
+  const SizeAlgebra();
+
+  @override
+  Group_<Size> get addition => const SizeSumGroup();
+
+  @override
+  Group_<Size> get multiplication => const SizeProductGroup();
+
+  @override
+  ScalarMonoid_<Size, double> get scalar => const SizeScalarMonoid();
+}

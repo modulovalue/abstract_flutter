@@ -57,71 +57,26 @@ class EdgeInsetsProductMonoid implements Monoid_<EdgeInsets> {
       );
 }
 
-class EdgeInsetsDirectionalField implements Field_<EdgeInsetsDirectional> {
-  const EdgeInsetsDirectionalField();
+class EdgeInsetsScalarMonoid implements ScalarMonoid_<EdgeInsets, double> {
+  const EdgeInsetsScalarMonoid();
 
   @override
-  Group_<EdgeInsetsDirectional> get addition =>
-      const EdgeInsetsDirectionalSumGroup();
+  double sIdentity() => 1.0;
 
   @override
-  Group_<EdgeInsetsDirectional> get multiplication =>
-      const EdgeInsetsDirectionalProductGroup();
+  EdgeInsets sOperate(EdgeInsets vector, double scalar) => vector * scalar;
 }
 
-class EdgeInsetsDirectionalSumGroup extends EdgeInsetsDirectionalSumMonoid
-    implements Group_<EdgeInsetsDirectional> {
-  const EdgeInsetsDirectionalSumGroup();
+class EdgeInsetsAlgebra implements Algebra_<EdgeInsets, double> {
+  const EdgeInsetsAlgebra();
 
   @override
-  EdgeInsetsDirectional inverse(
-          EdgeInsetsDirectional a, EdgeInsetsDirectional b) =>
-      a - b;
-}
-
-class EdgeInsetsDirectionalProductGroup
-    extends EdgeInsetsDirectionalProductMonoid
-    implements Group_<EdgeInsetsDirectional> {
-  const EdgeInsetsDirectionalProductGroup();
+  Group_<EdgeInsets> get addition => const EdgeInsetsSumGroup();
 
   @override
-  EdgeInsetsDirectional inverse(
-          EdgeInsetsDirectional a1, EdgeInsetsDirectional a2) =>
-      EdgeInsetsDirectional.only(
-        top: a1.top / a2.top,
-        bottom: a1.bottom / a2.bottom,
-        start: a1.start / a2.start,
-        end: a1.end / a2.end,
-      );
-}
-
-class EdgeInsetsDirectionalSumMonoid implements Monoid_<EdgeInsetsDirectional> {
-  const EdgeInsetsDirectionalSumMonoid();
+  Group_<EdgeInsets> get multiplication => const EdgeInsetsProductGroup();
 
   @override
-  EdgeInsetsDirectional identity() => EdgeInsetsDirectional.zero;
-
-  @override
-  EdgeInsetsDirectional operate(
-          EdgeInsetsDirectional a, EdgeInsetsDirectional b) =>
-      a + b;
-}
-
-class EdgeInsetsDirectionalProductMonoid
-    implements Monoid_<EdgeInsetsDirectional> {
-  const EdgeInsetsDirectionalProductMonoid();
-
-  @override
-  EdgeInsetsDirectional identity() =>
-      const EdgeInsetsDirectional.fromSTEB(1.0, 1.0, 1.0, 1.0);
-
-  @override
-  EdgeInsetsDirectional operate(
-          EdgeInsetsDirectional a1, EdgeInsetsDirectional a2) =>
-      EdgeInsetsDirectional.only(
-        top: a1.top * a2.top,
-        bottom: a1.bottom * a2.bottom,
-        start: a1.start * a2.start,
-        end: a1.end * a2.end,
-      );
+  ScalarMonoid_<EdgeInsets, double> get scalar =>
+      const EdgeInsetsScalarMonoid();
 }

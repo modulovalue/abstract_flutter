@@ -44,3 +44,26 @@ class OffsetProductMonoid implements Monoid_<Offset> {
   @override
   Offset operate(Offset a1, Offset a2) => Offset(a1.dx * a2.dx, a1.dy * a2.dy);
 }
+
+class OffsetScalarMonoid implements ScalarMonoid_<Offset, double> {
+  const OffsetScalarMonoid();
+
+  @override
+  double sIdentity() => 1.0;
+
+  @override
+  Offset sOperate(Offset vector, double scalar) => vector * scalar;
+}
+
+class OffsetAlgebra implements Algebra_<Offset, double> {
+  const OffsetAlgebra();
+
+  @override
+  Group_<Offset> get addition => const OffsetSumGroup();
+
+  @override
+  Group_<Offset> get multiplication => const OffsetProductGroup();
+
+  @override
+  ScalarMonoid_<Offset, double> get scalar => const OffsetScalarMonoid();
+}

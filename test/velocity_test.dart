@@ -2,6 +2,8 @@ import 'package:abstract_flutter/abstract_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'common.dart';
+
 //ignore_for_file: prefer_const_constructors
 void main() {
   group("$VelocityField", () {
@@ -54,5 +56,15 @@ void main() {
               Velocity(pixelsPerSecond: Offset(7.0, 11.0))),
           Velocity(pixelsPerSecond: Offset(14.0, 33.0)));
     });
+  });
+  group("$VelocityScalarMonoid", () {
+    testScalarIdentity(VelocityScalarMonoid(), Velocity(pixelsPerSecond: Offset(3.0, 2.0)));
+    testScalarMultiplication(
+        VelocityScalarMonoid(), Velocity(pixelsPerSecond: Offset(3.0, 5.0)), 2.0, Velocity(pixelsPerSecond: Offset(6.0, 10.0)));
+  });
+  test("$VelocityAlgebra", () {
+    expect(VelocityAlgebra().addition, const VelocitySumGroup());
+    expect(VelocityAlgebra().multiplication, const VelocityProductGroup());
+    expect(VelocityAlgebra().scalar, const VelocityScalarMonoid());
   });
 }

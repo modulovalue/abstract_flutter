@@ -2,6 +2,8 @@ import 'package:abstract_flutter/abstract_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'common.dart';
+
 //ignore_for_file: prefer_const_constructors
 void main() {
   group("$RadiusField", () {
@@ -51,5 +53,15 @@ void main() {
         Radius.elliptical(33.0, 65.0),
       );
     });
+  });
+  group("$RadiusScalarMonoid", () {
+    testScalarIdentity(RadiusScalarMonoid(), Radius.elliptical(3.0, 2.0));
+    testScalarMultiplication(
+        RadiusScalarMonoid(), Radius.elliptical(3.0, 5.0), 2.0, Radius.elliptical(6.0, 10.0));
+  });
+  test("$RadiusAlgebra", () {
+    expect(RadiusAlgebra().addition, const RadiusSumGroup());
+    expect(RadiusAlgebra().multiplication, const RadiusProductGroup());
+    expect(RadiusAlgebra().scalar, const RadiusScalarMonoid());
   });
 }

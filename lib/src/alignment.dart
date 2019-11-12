@@ -49,59 +49,25 @@ class AlignmentProductMonoid implements Monoid_<Alignment> {
       Alignment(a1.x * a2.x, a1.y * a2.y);
 }
 
-class AlignmentDirectionalField implements Field_<AlignmentDirectional> {
-  const AlignmentDirectionalField();
+class AlignmentScalarMonoid implements ScalarMonoid_<Alignment, double> {
+  const AlignmentScalarMonoid();
 
   @override
-  Group_<AlignmentDirectional> get addition =>
-      const AlignmentDirectionalSumGroup();
+  double sIdentity() => 1.0;
 
   @override
-  Group_<AlignmentDirectional> get multiplication =>
-      const AlignmentDirectionalProductGroup();
+  Alignment sOperate(Alignment vector, double scalar) => vector * scalar;
 }
 
-class AlignmentDirectionalSumGroup extends AlignmentDirectionalSumMonoid
-    implements Group_<AlignmentDirectional> {
-  const AlignmentDirectionalSumGroup();
+class AlignmentAlgebra implements Algebra_<Alignment, double> {
+  const AlignmentAlgebra();
 
   @override
-  AlignmentDirectional inverse(
-          AlignmentDirectional a, AlignmentDirectional b) =>
-      AlignmentDirectional(a.start - b.start, a.y - b.y);
-}
-
-class AlignmentDirectionalProductGroup extends AlignmentDirectionalProductMonoid
-    implements Group_<AlignmentDirectional> {
-  const AlignmentDirectionalProductGroup();
+  Group_<Alignment> get addition => const AlignmentSumGroup();
 
   @override
-  AlignmentDirectional inverse(
-          AlignmentDirectional a1, AlignmentDirectional a2) =>
-      AlignmentDirectional(a1.start / a2.start, a1.y / a2.y);
-}
-
-class AlignmentDirectionalSumMonoid implements Monoid_<AlignmentDirectional> {
-  const AlignmentDirectionalSumMonoid();
+  Group_<Alignment> get multiplication => const AlignmentProductGroup();
 
   @override
-  AlignmentDirectional identity() => const AlignmentDirectional(0.0, 0.0);
-
-  @override
-  AlignmentDirectional operate(
-          AlignmentDirectional a, AlignmentDirectional b) =>
-      AlignmentDirectional(a.start + b.start, a.y + b.y);
-}
-
-class AlignmentDirectionalProductMonoid
-    implements Monoid_<AlignmentDirectional> {
-  const AlignmentDirectionalProductMonoid();
-
-  @override
-  AlignmentDirectional identity() => const AlignmentDirectional(1.0, 1.0);
-
-  @override
-  AlignmentDirectional operate(
-          AlignmentDirectional a1, AlignmentDirectional a2) =>
-      AlignmentDirectional(a1.start * a2.start, a1.y * a2.y);
+  ScalarMonoid_<Alignment, double> get scalar => const AlignmentScalarMonoid();
 }

@@ -2,6 +2,8 @@ import 'package:abstract_flutter/abstract_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'common.dart';
+
 //ignore_for_file: prefer_const_constructors
 void main() {
   group("$SizeField", () {
@@ -41,5 +43,15 @@ void main() {
       expect(SizeProductMonoid().operate(Size(2.0, 3.0), Size(7.0, 11.0)),
           Size(14.0, 33.0));
     });
+  });
+  group("$SizeScalarMonoid", () {
+    testScalarIdentity(SizeScalarMonoid(), Size(3.0, 2.0));
+    testScalarMultiplication(
+        SizeScalarMonoid(), Size(3.0, 5.0), 2.0, Size(6.0, 10.0));
+  });
+  test("$SizeAlgebra", () {
+    expect(SizeAlgebra().addition, const SizeSumGroup());
+    expect(SizeAlgebra().multiplication, const SizeProductGroup());
+    expect(SizeAlgebra().scalar, const SizeScalarMonoid());
   });
 }

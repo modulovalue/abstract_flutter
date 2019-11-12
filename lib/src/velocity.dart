@@ -50,3 +50,27 @@ class VelocityProductMonoid implements Monoid_<Velocity> {
       pixelsPerSecond: const OffsetProductMonoid()
           .operate(a.pixelsPerSecond, b.pixelsPerSecond));
 }
+
+class VelocityScalarMonoid implements ScalarMonoid_<Velocity, double> {
+  const VelocityScalarMonoid();
+
+  @override
+  double sIdentity() => 1.0;
+
+  @override
+  Velocity sOperate(Velocity vector, double scalar) =>
+      Velocity(pixelsPerSecond: vector.pixelsPerSecond * scalar);
+}
+
+class VelocityAlgebra implements Algebra_<Velocity, double> {
+  const VelocityAlgebra();
+
+  @override
+  Group_<Velocity> get addition => const VelocitySumGroup();
+
+  @override
+  Group_<Velocity> get multiplication => const VelocityProductGroup();
+
+  @override
+  ScalarMonoid_<Velocity, double> get scalar => const VelocityScalarMonoid();
+}

@@ -1,6 +1,6 @@
 name: abstract_flutter
 description: A collection of abstract_dart structures for Flutter with Fields, Groups and Monoids.
-version: 0.1.0
+version: 0.1.1
 homepage: https://www.github.com/modulovalue/abstract_flutter
 author: Modestas Valauskas <valauskasmodestas+dartpub@gmail.com>
 issue_tracker: https://github.com/modulovalue/abstract_flutter/issues
@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   meta: ^1.0.0
-  abstract_dart: ^1.0.0
+  abstract_dart: ^1.0.2
 
 dev_dependencies:
   extra_pedantic: ^1.1.1+3
